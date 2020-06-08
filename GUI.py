@@ -138,6 +138,20 @@ def save(a):
 	# print("Printing Data: ")
 	# print(First,Last,phone,email,address,gender)
 
+	# Make sure you have connected with localhost and created a database with named"py-backend" and a table named="user_report"
+	import pymysql
+
+	connection = pymysql.connect(host="localhost", user="root", passwd="", database="py-backend")
+	cursor = connection.cursor()
+
+	insert1 = "INSERT INTO user_report (First_name, Last_name, Phone, Email, Address, Gender, Report) VALUES (%s, %s, %s, %s, %s, %s, %s);"
+	report1 = (First, Last, phone, email, address, gender,a)
+
+	cursor.execute(insert1, report1)
+
+	connection.commit()
+	connection.close()
+
 def reset():
 	Fname.set("")
 	Lname.set("")
